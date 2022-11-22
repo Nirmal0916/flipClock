@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href=".../compiled/flipclock.css">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script src=".../compiled/flipclock.js"></script>
+	<title>TImer </title>
+
+</head>
+<body>
+
+   <center> <h1>Timer</h1> 
+
+
+<div class="clock" style="margin:2em;"></div>
+<div class="message"></div>
+		<form>
+			Enter Hour:
+			<input type="number" id="hour">
+         Enter Minute:
+			<input type="number" id="minute" >
+         Enter Second:
+			<input type="number" id="second" >
+		</form>
+
+		<button type="button" class="start" style="margin: 25px; font-size: 20px; padding: 15px;">Start</button>
+   </center>
+
+</body>
+
+<!-- Javascript -->
+<script type="text/javascript">
+
+			var clock;
+
+$(document).ready(function(){
+$('.start').click(function(){
+		var sec = document.querySelector('#second').value;
+		var hour = document.querySelector('#hour').value;
+		var minute = document.querySelector('#minute').value;
+      sec = parseFloat(sec);
+
+     //Using the type of operator for the variable named sec becuase it was a string but apparently hour and minute were not string but were NaN and no were showing no any kind of error. Couldn't figure out the problem so for temporary solution I just converted the sec into a number with the aid of parseFloat() property. 
+				      
+    
+		var show = sec + (minute *60) + (hour * 60 *60);
+				
+      //This shows the clock.
+	var countDoun = show;
+		clock = $('.clock').FlipClock(countDoun, {
+			clockFace: 'HourCounter',
+         countdown: true,
+			autoStart: false,
+			callbacks: {
+		   stop: function() {
+		      $('.message').html('The clock has stopped!');
+		   }
+		}
+	}
+	);
+   //This starts the clock when start button is pressed.
+			clock.start();
+	});
+});
+</script>
+</html>
