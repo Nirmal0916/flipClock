@@ -17,14 +17,17 @@
 
 <div class="clock" style="margin:2em;"></div>
 <div class="message"></div>
-		<form>
+<div class="form">
+	<form>
 			Enter Hour:
-			<input type="number" id="hour">
+			<input type="number" id="hour"value="0">
          Enter Minute:
-			<input type="number" id="minute" >
+			<input type="number" id="minute" value="0">
          Enter Second:
-			<input type="number" id="second" >
+			<input type="number" id="second" value="0">
 		</form>
+</div>
+		
 
 		<button type="button" class="start" style="margin: 25px; font-size: 20px; padding: 15px;">Start</button>
    </center>
@@ -38,11 +41,14 @@
 
 $(document).ready(function(){
 $('.start').click(function(){
+
+	//accessing the form variable
+	var form = document.querySelector('div.form');
 		var sec = document.querySelector('#second').value;
 		var hour = document.querySelector('#hour').value;
 		var minute = document.querySelector('#minute').value;
       sec = parseFloat(sec);
-
+console.log(form);
      //Using the type of operator for the variable named sec becuase it was a string but apparently hour and minute were not string but were NaN and no were showing no any kind of error. Couldn't figure out the problem so for temporary solution I just converted the sec into a number with the aid of parseFloat() property. 
 				      
     
@@ -64,6 +70,51 @@ $('.start').click(function(){
    //This starts the clock when start button is pressed.
 			clock.start();
 	});
+
+$('.start').click(function(){
+	$('.form').css("display", "none");
+});
+$('.start').click(function(){
+	$('h1').css("display", "none");
+});
+$('.start').click(function(){
+	$('.clock').css("width", "1000px");
+});
+
 });
 </script>
+<style>
+
+body{
+	display: flex;
+	justify-content:center;
+   align-items: center;
+   background: darkorchid;
+   min-height: 100vh;
+   overflow-y: hidden;
+}	
+h1{
+	color: white;
+   font-family: verdana;
+   font-size: 6em;
+}
+.clock{
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+button{
+	background-color: #f44336;
+	color: white;
+	border-radius: 20px;
+	width: 150px;
+}
+.form{
+	
+}
+.form input{
+	width: 50px;
+}
+</style>
 </html>
