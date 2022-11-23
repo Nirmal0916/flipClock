@@ -93,40 +93,57 @@ body{
    background: darkorchid;
    min-height: 100vh;
    overflow-y: hidden;
-/*   position: absolute;*/
+   font-family: monospace;
+
 }	
 .main{
 	border: 2px solid orange;
 	border-radius: 10px;
 	background: white;
+/*	transition: 0.1s;*/
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width:200px;
+	margin-bottom: 20px;
 }
 h1{
 	color: orange;
    font-family: verdana;
    font-size: 6em;
-   position: relative;
-   top: -190px;
-   left: 200px;
+  
 }
 .clock{
-	width: auto;
+	padding: 100px 0 0 0;
+	/*width: auto;
+	height: 200px;
 	display: flex;
-	height: 500px;
 	justify-content: center;
 	align-items: center;
+	position: absolute;*/
 }
 button{
-	background-color: #f44336;
-	color: white;
+	background-color: #313333;
 	border-radius: 20px;
-	width: 150px;
+	color: white;
+	/*313333color: white;
+	
+	width: 150px;*/
+   
 }
 .form{
-	display: block;
+	/*display: inline-block;
+	position: relative;
+   left: 20px;
+*/
 }
 .form input{
-	width: 50px;
-	display: block;
+	/*width: 50px;
+	display: block;*/
+}
+.flip-clock-wrapper ul{
+/*	transform: scale3d(0,0,0);*/
 }
 </style>
 </html>
