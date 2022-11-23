@@ -5,33 +5,34 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="flipclock.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
    <script src="flipclock.js"></script>
 	<title>TImer </title>
 
 </head>
 <body>
 
-   <center> <h1>Timer</h1> 
+   <h1>Timer</h1> 
 
-
+<section class="main">
 <div class="clock" style="margin:2em;"></div>
-<div class="message"></div>
+<div class="message" style="justify-content: center;"></div>
 <div class="form">
 	<form>
-			Enter Hour:
-			<input type="number" id="hour"value="0">
-         Enter Minute:
+		   Enter hour
+			<input type="number" id="hour" value="0" >
+		   Enter minute
 			<input type="number" id="minute" value="0">
-         Enter Second:
+		   Enter second
+
 			<input type="number" id="second" value="0">
 		</form>
 </div>
 		
 
 		<button type="button" class="start" style="margin: 25px; font-size: 20px; padding: 15px;">Start</button>
-   </center>
 
+</section>
 </body>
 
 <!-- Javascript -->
@@ -43,12 +44,12 @@ $(document).ready(function(){
 $('.start').click(function(){
 
 	//accessing the form variable
-	var form = document.querySelector('div.form');
+
 		var sec = document.querySelector('#second').value;
 		var hour = document.querySelector('#hour').value;
 		var minute = document.querySelector('#minute').value;
       sec = parseFloat(sec);
-console.log(form);
+
      //Using the type of operator for the variable named sec becuase it was a string but apparently hour and minute were not string but were NaN and no were showing no any kind of error. Couldn't figure out the problem so for temporary solution I just converted the sec into a number with the aid of parseFloat() property. 
 				      
     
@@ -63,6 +64,7 @@ console.log(form);
 			callbacks: {
 		   stop: function() {
 		      $('.message').html('The clock has stopped!');
+		       $('.main').css("background", "red");
 		   }
 		}
 	}
@@ -73,13 +75,12 @@ console.log(form);
 
 $('.start').click(function(){
 	$('.form').css("display", "none");
-});
-$('.start').click(function(){
 	$('h1').css("display", "none");
-});
-$('.start').click(function(){
 	$('.clock').css("width", "1000px");
+
+
 });
+
 
 });
 </script>
@@ -92,15 +93,25 @@ body{
    background: darkorchid;
    min-height: 100vh;
    overflow-y: hidden;
+/*   position: absolute;*/
 }	
+.main{
+	border: 2px solid orange;
+	border-radius: 10px;
+	background: white;
+}
 h1{
-	color: white;
+	color: orange;
    font-family: verdana;
    font-size: 6em;
+   position: relative;
+   top: -190px;
+   left: 200px;
 }
 .clock{
 	width: auto;
 	display: flex;
+	height: 500px;
 	justify-content: center;
 	align-items: center;
 }
@@ -111,10 +122,11 @@ button{
 	width: 150px;
 }
 .form{
-	
+	display: block;
 }
 .form input{
 	width: 50px;
+	display: block;
 }
 </style>
 </html>
