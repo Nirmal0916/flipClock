@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="flipclock.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script src="flipclock.js"></script>
+	<title>Timer </title>
+
+</head>
+<body>
+
+   <!-- <h1>Timer</h1>  -->
+
+<section class="main">
+<div class="clock" style="margin:2em;"></div>
+<div class="message"></div>
+<div class="form">
+	<form>
+		   Enter hour
+			<input type="number" id="hour" value="0" >
+		   Enter minute
+			<input type="number" id="minute" value="0">
+		   Enter second
+
+			<input type="number" id="second" value="0">
+		</form>
+</div>
+		
+
+		<button type="button" class="start" style="margin: 25px; font-size: 20px; padding: 15px;">Start</button>
+
+</section>
+</body>
+
+<!-- Javascript -->
+<script type="text/javascript">
+
+			var clock;
+
+$(document).ready(function(){
+$('.start').click(function(){
+
+	//accessing the form variable
+
+		var sec = document.querySelector('#second').value;
+		var hour = document.querySelector('#hour').value;
+		var minute = document.querySelector('#minute').value;
+      sec = parseFloat(sec);
+
+     //Using the type of operator for the variable named sec becuase it was a string but apparently hour and minute were not string but were NaN and no were showing no any kind of error. Couldn't figure out the problem so for temporary solution I just converted the sec into a number with the aid of parseFloat() property. 
+				      
+    
+		var show = sec + (minute *60) + (hour * 60 *60);
+				
+      //This shows the clock.
+	var countDoun = show;
+		clock = $('.clock').FlipClock(countDoun, {
+			clockFace: 'HourCounter',
+         countdown: true,
+			autoStart: false,
+			callbacks: {
+		   stop: function() {
+		      $('.message').html('The clock has stopped!');
+		       $('.main').css("background", "red");
+		   }
+		}
+	}
+	);
+   //This starts the clock when start button is pressed.
+			clock.start();
+	});
+
+$('.start').click(function(){
+	$('.form').css("display", "none");
+	$('h1').css("display", "none");
+	$('.main').css("width", "600px").css("height","300px");
+   $('.start').html("Stop");
+   // $('.flip-clock-wrapper ul').css("transform","scale3d(2.0,2,0,0)");
+$('.start').click(function(){
+	clock.stop();
+	 $('.start').html("Resume");
+	 //After it
+	 $('.start').click(function(){
+	clock.start();
+	 $('.start').html("");
+});
+});
+
+});
+
+
+});
+</script>
+<style>
+
+body{
+	display: flex;
+	justify-content:center;
+   align-items: center;
+   background: darkorchid;
+   min-height: 100vh;
+   overflow-y: hidden;
+   font-family: monospace;
+
+}	
+.main{
+	border: 2px solid orange;
+	border-radius: 10px;
+	background: white;
+/*	transition: 0.1s;*/
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width:200px;
+	margin-bottom: 20px;
+}
+h1{
+	color: orange;
+   font-family: verdana;
+   font-size: 6em;
+  
+}
+.clock{
+	padding: 100px 0 0 0;
+	/*width: auto;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;*/
+}
+button{
+	background-color: #313333;
+	border-radius: 20px;
+	color: white;
+	/*313333color: white;
+	
+	width: 150px;*/
+   
+}
+.form{
+	/*display: inline-block;
+	position: relative;
+   left: 20px;
+*/
+}
+.form input{
+	/*width: 50px;
+	display: block;*/
+}
+.flip-clock-wrapper ul{
+/*	transform: scale3d(0,0,0);*/
+background: red;
+}
+</style>
+</html>
